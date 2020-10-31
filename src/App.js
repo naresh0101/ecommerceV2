@@ -6,10 +6,14 @@ import Login from './containers/Login';
 import Dashboard from './containers/Dashboard';
 import SignUp from './containers/Register';
 
+import { Provider } from "react-redux";
+import store from "./store"
+
 
 function App() {
   return (
-    <AppLayout>
+    <Provider store={store}>
+      <AppLayout>
       <Switch>
         <Route  path="/login" exact component={Login} />
         <Route  path="/signup" exact component={SignUp} />
@@ -17,6 +21,8 @@ function App() {
 
       </Switch>
     </AppLayout>
+    </Provider>
+    
   );
 }
 

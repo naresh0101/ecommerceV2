@@ -1,7 +1,7 @@
 
 
 import React, { Component } from "react";
-import ProductInCartOrWishList from "../../components/cartOrWishList";
+import MyWishlist from "../../components/Wishlist"
 
 class WishList extends Component {
     constructor() {
@@ -43,7 +43,7 @@ class WishList extends Component {
 
                                             </tr>
                                         </thead>
-                                       <ProductInCartOrWishList />
+                                       <MyWishlist />
 
                                     </table>
                                 </div>

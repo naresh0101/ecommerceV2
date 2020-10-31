@@ -1,14 +1,14 @@
 
 
 import React, { Component } from "react";
-import ProductInCartOrWishList from "../../components/cartOrWishList";
+import Basket from "../../components/Basket";
+import Checkout from "../../components/checkout";
 
 class InCart extends Component {
     constructor() {
         super();
 
     }
-
 
     render() {
 
@@ -26,31 +26,32 @@ class InCart extends Component {
                                                     Product
                             </th>
                                                 <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                                    Availability
-                            </th>
-                                                <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                                    location pin
-                            </th>
-                                                <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                                    MRP
-                            </th>
-                                                <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                                    Price
+                                                    For whome
                             </th>
                                                 <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                                     Delete
                             </th>
+                                                <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                                  Rs.  MRP
+                            </th>
+                                                <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                                  Rs.  Price
+                            </th>
 
                                             </tr>
                                         </thead>
-                                       <ProductInCartOrWishList />
+                                        <Basket />
 
                                     </table>
                                 </div>
                             </div>
+                           
                         </div>
                     </div>
+                    <Checkout />
+
                 </div>
+                
             </main>
 
 

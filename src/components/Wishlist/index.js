@@ -1,9 +1,12 @@
 
 
 import React from 'react'
+import { connect } from "react-redux";
 
-function ProductInCartOrWishList() {
-
+function MyWishlist({basketProps}) {
+  console.log('====================================');
+  console.log(basketProps);
+  console.log('====================================');
   return (
     <tbody className="bg-white divide-y divide-gray-200">
       <tr>
@@ -52,6 +55,9 @@ function ProductInCartOrWishList() {
   );
 }
 
-export default ProductInCartOrWishList;
+const mapStateToProps = state=>({
+  basketProps : state.basKetState
+})
+export default connect(null,{mapStateToProps})(MyWishlist);
 
 
