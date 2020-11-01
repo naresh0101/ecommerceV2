@@ -3,7 +3,6 @@
 import React, { Fragment } from "react";
 
 function SellProductForm() {
-
     return (
         <Fragment>
          <div className="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:px-0">

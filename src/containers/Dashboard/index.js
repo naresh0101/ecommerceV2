@@ -5,7 +5,7 @@ import Header from '../../components/Header';
 import product from '../../views/productList';
 import ViewProduct from '../../views/viewProduct';
 import InCart from '../../views/InCart';
-import WishList from '../../views/Wishlist';
+import SellProduct from '../../views/sellProduct';
 
 
 const Dashboard = () => {
@@ -19,7 +19,7 @@ const Dashboard = () => {
           <Route exact path="/product" component={product} />
           <Route exact path="/viewproduct" component={ViewProduct} />
           <Route exact path="/mycart" component={InCart} />
-          <Route exact path="/wishlist" component={WishList} />
+          <Route exact path="/SellProduct" component={SellProduct} />
         </Switch>
 
       </div>

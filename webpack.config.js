@@ -1,6 +1,7 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { HotModuleReplacementPlugin } = require('webpack')
+const css = require("./src/index.css")
 
 module.exports = (env, argv) => {
   return {

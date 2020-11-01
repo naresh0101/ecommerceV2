@@ -10,6 +10,11 @@ import { Provider } from "react-redux";
 import store from "./store"
 
 
+var authenticated = false;
+if(localStorage.getItem("token")){
+  authenticated = true
+}
+
 function App() {
   return (
     <Provider store={store}>
@@ -17,8 +22,7 @@ function App() {
       <Switch>
         <Route  path="/login" exact component={Login} />
         <Route  path="/signup" exact component={SignUp} />
-        <PrivateRoute  path="/" component={Dashboard} />
-
+        <PrivateRoute authenticated={authenticated}  path="/" component={Dashboard} />
       </Switch>
     </AppLayout>
     </Provider>

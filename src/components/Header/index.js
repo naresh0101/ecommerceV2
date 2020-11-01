@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {getNumbers} from "../../actions/getAction"
+import SellProductForm from '../SearchProduct';
 
 
 function Appbar(props) {
    useEffect(()=>{
        getNumbers()
    },[])
+   let logout =()=>{
+       localStorage.clear()
+   }
     return (
       <header className="flex justify-between items-center py-4 px-6 bg-white border-b-4 border-orange-600">
       <div className="flex items-center">
@@ -18,7 +22,7 @@ function Appbar(props) {
               </svg>
           </button>
       </div>
-  
+        <SellProductForm />
       <div className="flex items-center">
             <Link to="mycart" 
                   className="relative block h-10 w-10 rounded-full overflow-hidden focus:outline-none">
@@ -52,7 +56,7 @@ function Appbar(props) {
                   <Link to="/"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-600 hover:text-white">Products</Link>
                   <Link to="/login"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-600 hover:text-white">Logout</Link>
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-600 hover:text-white" onClick={logout}>Logout</Link>
               </div>
           </div>
       </div>

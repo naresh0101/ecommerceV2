@@ -24,9 +24,6 @@ function Basket({ basketProps }) {
                 </div>
               </div>
             </td>
-            <td className="px-6 py-4 whitespace-no-wrap">
-              <div className="text-sm leading-5 text-gray-900"> {Product.forWhome}</div>
-            </td>
             <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
               <button >
                 <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
