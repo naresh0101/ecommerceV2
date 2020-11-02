@@ -4,6 +4,7 @@ import React, { useEffect }  from "react";
 import { connect } from "react-redux";
 
 function Product({viewProduct}) {
+    console.log(viewProduct);
     return (
         <section className="text-gray-700 body-font overflow-hidden">
             <div className="container px-5 py-24 mx-auto">

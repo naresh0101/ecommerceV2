@@ -27,12 +27,14 @@ function ProductCard(props) {
             <Fragment>
             {props.products.searchedProducts?.map((Product, index) => {
             return(
-                <Link  to="/viewproduct"  target="_blank" className="lg:w-1/4 md:w-1/2 p-4 w-full hover:shadow" key={index}>
-                <div>
+                <div  className="lg:w-1/4 md:w-1/2 p-4 w-full hover:shadow" key={index}>
+                    <div>
+                    <Link  to="/viewproduct">
                      <button onClick={ ()=> props.addViewProduct(Product) }  className="block relative items-center h-48 rounded overflow-hidden">
                          <img alt="ecommerce"  className="mx-auto" src={Product.image}/>
                      </button>
-                 <div className="mt-4">
+                     </Link>
+                    <div className="mt-4">
                      <div className="flex justify-between">
                      <h3 className="text-gray-900  tracking-widest title-font mb-1">{Product.product}</h3>
                      <h3 className="text-gray-600 tracking-widest title-font mb-1">{Product.brand}</h3>
@@ -46,7 +48,7 @@ function ProductCard(props) {
                  </div>
                 </div>
                  <button className="h-12 mt-4 w-full text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={ ()=> props.addBasket(Product) } >Add to cart</button>
-             </Link>
+             </div>
                 )
             })}
         </Fragment>
@@ -57,11 +59,13 @@ function ProductCard(props) {
             
               {productlist?.map((Product, index) => {
                 return(
-                    <Link  to="/viewproduct" className="lg:w-1/4 md:w-1/2 p-4 w-full hover:shadow" key={index}>
+                    <div   className="lg:w-1/4 md:w-1/2 p-4 w-full hover:shadow" key={index}>
                        <div>
-                            <button onClick={ ()=> props.addViewProduct(Product) }   className="block relative items-center h-48 rounded overflow-hidden">
-                                <img alt="ecommerce"  className="mx-auto" src={Product.image}/>
-                            </button>
+                       <Link  to="/viewproduct">
+                        <button onClick={ ()=> props.addViewProduct(Product) }  className="block relative items-center h-48 rounded overflow-hidden">
+                            <img alt="ecommerce"  className="mx-auto" src={Product.image}/>
+                        </button>
+                        </Link>
                         <div className="mt-4">
                             <div className="flex justify-between">
                             <h3 className="text-gray-900  tracking-widest title-font mb-1">{Product.product}</h3>
@@ -76,7 +80,7 @@ function ProductCard(props) {
                         </div>
                        </div>
                         <button className="h-12 mt-4 w-full text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={ ()=> props.addBasket(Product) } >Add to cart</button>
-                    </Link>
+                    </div>
                     )
                 })}
             </Fragment>
