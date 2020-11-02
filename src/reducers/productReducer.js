@@ -4,19 +4,12 @@ import {
 
 
 const initialState = {
-    basketNumber : 0,
-    products : [],
-    TotalBasketPice : 0,
-    TotalMrpprice : 0,
-    searchedProducts : null
+    searchedProducts : []
 }
 
 export default (state = initialState, action) =>{
     switch (action.type) {
         case SEARCH_PRODUCT:
-            console.log('====================================');
-            console.log(action.payload);
-            console.log('====================================');
             return {
                 ...state,
                 searchedProducts : action.payload

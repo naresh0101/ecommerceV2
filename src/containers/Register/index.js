@@ -1,11 +1,12 @@
 
 import React, { useState, Fragment } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect,Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 
 function SignUpForm() {
-    var [Alert, setAlert] = useState("Welcome to Shopping cart")
+    var [Alert, setAlert] = useState("")
     var [signup, setSignup] = useState(false)
+    var [displayStatus, setDisplay] = useState("none")
 
 
     let [user, setUser] = useState({
@@ -29,65 +30,65 @@ function SignUpForm() {
       fetch('http://localhost:5000/newcustomer', payload)
           .then(response => response.json())
           .then((data)=>{
-            setAlert(data.message)
-            if(data.customer == true){
+            console.log('====================================');
+            console.log(data);
+            console.log('====================================');
+            if(!data.success){
+              setDisplay("block")
+              setAlert(data.message)
+            }else{
               setSignup(true)
             }
           });
         
      }
      if(signup){
-       console.log("hi");
        return <Redirect to="/login" />
      }
      return (
       <Fragment>
             <Navbar/>
-            <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 ">
-           <div className="max-w-md w-full">
-           <img className="mx-auto h-12 w-auto" src="https://logodix.com/logo/1787735.png" alt="Workflow" />
-
-          <form className="mt-8" method="POST" onSubmit={SignUpForm}>
-          <div className="flex items-center bg-blue-500 text-white text-sm font-bold px-4 py-3" role="alert">
-            <svg className="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/></svg>
-            <p>{Alert}</p>
-          </div>
-            <div className="rounded-md shadow-sm">
-              <div>
-                <input aria-label="Email address" onChange={handleChange} name="email" type="email" required className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue  focus:z-10 sm:text-sm sm:leading-5" placeholder="Email address" />
+            <section className="text-gray-700 body-font">
+              <div className="container px-5 py-24 mx-auto flex flex-wrap mt-8 shadow">
+                
+              <div className="p-4 lg:w-1/2 md:w-full">
+                <div className="flex  rounded-lg p-8 sm:flex-row flex-col">
+                  <img src="https://blog.jakomu.com/wp-content/uploads/2019/10/undraw_successful_purchase_uyin.png" />
               </div>
-              <div className="mt-2">
-                <input aria-label="Password" name="password" onChange={handleChange}  type="password" required className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:shadow-outline-blue  focus:z-10 sm:text-sm sm:leading-5" placeholder="Password" />
-              </div>
-            </div>
-
-            <div className="mt-6 flex items-center justify-between">
-              <div className="flex items-center">
-              <a href="/login" className="font-medium text-orange-600 hover:text-orange-500 focus:outline-none focus:underline transition ease-in-out duration-150" >
-                Login
-                </a>
               </div>
 
-              <div className="text-sm leading-5">
-                <a href="/forgot" className="font-medium text-orange-600 hover:text-orange-500 focus:outline-none focus:underline transition ease-in-out duration-150" >
-                  Forgot your password?
-                </a>
+              <div className="p-4 lg:w-1/2 md:w-full mt-8">
+                <div className="flex  rounded-lg p-8 sm:flex-row flex-col">
+                  
+                   <form className="flex-grow"  method="POST" onSubmit={SignUpForm}>
+                    <h2 className="text-gray-900 text-lg title-font font-medium mb-3">Sign Up With Email</h2>
+                    <div className=" mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative " style={{display:displayStatus}} role="alert">
+                        <span className="block sm:inline">{Alert}</span>
+                      <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
+                        <svg className="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+                      </span>
+                    </div>
+                    <input aria-label="Email address" onChange={handleChange} name="email" type="email" required className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue  focus:z-10 sm:text-sm sm:leading-5" placeholder="Email address" />
+                    <input aria-label="Password" name="password" onChange={handleChange}  type="password" required className="mt-4 appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:shadow-outline-blue  focus:z-10 sm:text-sm sm:leading-5" placeholder="Password" />
+                    <div className="justify-between">
+                    
+                    <Link to="/login" type="submit" className="mt-3 border-2 p-2 rounded text-indigo-500 inline-flex items-center">Login
+                      <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                      </svg>
+                    </Link>
+                    <button type="submit" className="mt-3 border-2 p-2 rounded text-indigo-500 inline-flex items-center float-right">Sign up
+                      <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                      </svg>
+                    </button>
+                    </div>
+                  </form>
+                </div>
               </div>
-            </div>
 
-            <div className="mt-6">
-              <button type="submit" className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-orange-600 hover:bg-orange-500 focus:outline-none focus:border-orange-700 focus:shadow-outline-orange active:bg-orange-700 transition duration-150 ease-in-out">
-                <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                  <svg className="h-5 w-5 text-orange-500 group-hover:text-orange-400 transition ease-in-out duration-150" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                  </svg>
-                </span>
-                Sign up
-              </button>
-            </div>
-          </form>
-        </div>
-    </div>
+           </div>
+        </section>
       </Fragment>
     );
 

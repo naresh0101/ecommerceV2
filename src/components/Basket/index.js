@@ -55,6 +55,6 @@ function Basket({ basketProps }) {
 const mapStateToProps = state => ({
   basketProps: state.basketState
 });
-export default connect(mapStateToProps)(Basket);
+export default connect(mapStateToProps,null)(Basket);
 
 

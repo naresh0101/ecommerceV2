@@ -1,19 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {getNumbers} from "../../actions/getAction"
-import SellProductForm from '../SearchProduct';
+import SearchProductForm from '../SearchProduct';
 
 
-function Appbar(props) {
-   useEffect(()=>{
-       getNumbers()
-   },[])
+function Appbar({basketProps}) {
    let logout =()=>{
        localStorage.clear()
    }
     return (
-      <header className="flex justify-between items-center py-4 px-6 bg-white border-b-4 border-orange-600">
+      <header className="flex justify-between items-center py-4 px-6 bg-white border-b-4 border-indigo-600">
       <div className="flex items-center">
           <button className="text-gray-500 focus:outline-none lg:hidden">
               <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,7 +18,7 @@ function Appbar(props) {
               </svg>
           </button>
       </div>
-        <SellProductForm />
+        <SearchProductForm/>
       <div className="flex items-center">
             <Link to="mycart" 
                   className="relative block h-10 w-10 rounded-full overflow-hidden focus:outline-none">
@@ -33,8 +29,8 @@ function Appbar(props) {
                     <path fill="none" d="M13.972,12.386c-1.022,0-1.855,0.834-1.855,1.856s0.833,1.853,1.855,1.853s1.854-0.83,1.854-1.853S14.994,12.386,13.972,12.386z M13.972,15.116c-0.484,0-0.878-0.393-0.878-0.874c0-0.484,0.394-0.878,0.878-0.878c0.482,0,0.875,0.394,0.875,0.878C14.847,14.724,14.454,15.116,13.972,15.116z"></path>
                 </svg>
               </Link>
-            <span style={{marginTop:"-30px",marginLeft:"-20px"}} className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-700 text-white mr-4">
-                {props.basketProps.basketNumber}
+            <span style={{marginTop:"-30px",marginLeft:"-20px"}} className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-indigo-700 text-white mr-4">
+                {basketProps.basketNumber}
             </span>
 
           <div x-data="{ dropdownOpen: false }" className="relative">
@@ -52,11 +48,11 @@ function Appbar(props) {
                   className="absolute right-0 mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10"
                   style={{display: "block"}}>
                   <Link to="/profile"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-600 hover:text-white">Profile</Link>
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Profile</Link>
                   <Link to="/"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-600 hover:text-white">Products</Link>
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Products</Link>
                   <Link to="/login"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-600 hover:text-white" onClick={logout}>Logout</Link>
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white" onClick={logout}>Logout</Link>
               </div>
           </div>
       </div>
@@ -67,4 +63,4 @@ function Appbar(props) {
 const mapStateToProps = state =>({
    basketProps : state.basketState
 })
-export default connect(mapStateToProps,getNumbers)(Appbar);
+export default connect(mapStateToProps)(Appbar);
