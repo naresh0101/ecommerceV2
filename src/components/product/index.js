@@ -50,14 +50,20 @@ function ProductCard(props) {
                 return(
                     <div className="lg:w-1/4 md:w-1/2 p-4 w-full hover:shadow" key={index}>
                        <div>
-                        <p className="block relative h-48 rounded overflow-hidden">
-                        <img alt="ecommerce"  src={Product.image}/>
+                            <p className="block relative items-center h-48 rounded overflow-hidden">
+                            <img alt="ecommerce"  className="mx-auto" src={Product.image}/>
                         </p>
                         <div className="mt-4">
-                            <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">{Product.Product}</h3>
-                            <h2 className="text-gray-900 truncate">{Product.discription}</h2>
-                            <p className="mt-1 text-red-700">MRP Rs. <del>{Product.mrp}</del></p>
-                            <p className="mt-1 text-green-700">Price Rs. {Product.price}</p>
+                            <div className="flex justify-between">
+                            <h3 className="text-gray-900  tracking-widest title-font mb-1">{Product.product}</h3>
+                            <h3 className="text-gray-600 tracking-widest title-font mb-1">{Product.brand}</h3>
+
+                            </div>
+                            <h2 className="text-gray-500 truncate">{Product.discription}</h2>
+                            <div className="flex justify-between">
+                                <p className="mt-1 text-red-700">MRP Rs. <del>{Product.mrp}</del></p>
+                                <p className="mt-1 text-green-700 float-right">Price Rs. {Product.price}</p>
+                            </div>
                         </div>
                        </div>
                         <button className="h-12 mt-4 w-full text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={ ()=> props.addBasket(Product) } >Add to cart</button>
