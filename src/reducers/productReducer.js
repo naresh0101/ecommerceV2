@@ -1,10 +1,11 @@
 import { 
     GET_SEARCH_PRODUCT,
-    SEARCH_PRODUCT } from "../actions/type"
+    SEARCH_PRODUCT, ADD_VIEW_PRODUCT} from "../actions/type"
 
 
 const initialState = {
-    searchedProducts : []
+    searchedProducts : [],
+    viewProduct : ""
 }
 
 export default (state = initialState, action) =>{
@@ -13,6 +14,11 @@ export default (state = initialState, action) =>{
             return {
                 ...state,
                 searchedProducts : action.payload
+        }
+        case ADD_VIEW_PRODUCT:
+            return {
+                ...state,
+                viewProduct : action.payload
         }
         case GET_SEARCH_PRODUCT:
             return {
